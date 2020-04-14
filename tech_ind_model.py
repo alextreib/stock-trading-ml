@@ -5,8 +5,8 @@ from keras.layers import Dense, Dropout, LSTM, Input, Activation, concatenate
 from keras import optimizers
 import numpy as np
 np.random.seed(4)
-from tensorflow import set_random_seed
-set_random_seed(4)
+import tensorflow
+tensorflow.random.set_seed(4)
 from util import csv_to_dataset, history_points
 
 
@@ -75,7 +75,7 @@ print(scaled_mse)
 
 import matplotlib.pyplot as plt
 
-plt.gcf().set_size_inches(22, 15, forward=True)
+fig = plt.gcf()
 
 start = 0
 end = -1
@@ -87,6 +87,8 @@ pred = plt.plot(y_test_predicted[start:end], label='predicted')
 # pred = plt.plot(y_predicted[start:end], label='predicted')
 
 plt.legend(['Real', 'Predicted'])
+
+fig.savefig('fig_tech_ind.pdf')
 
 plt.show()
 
